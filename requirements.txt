@@ -1,0 +1,6 @@
+pandas
+pyarrow
+aiohttp
+beautifulsoup4
+Pillow
+ImageHash

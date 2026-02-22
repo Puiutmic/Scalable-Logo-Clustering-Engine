@@ -1,0 +1,14 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Dataset (Too large for GitHub)
+*.parquet
+
+# Temporary download folder
+downloaded_logos/
+
+# Visual Studio files
+.vs/
+out/
+build/

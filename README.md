@@ -14,7 +14,7 @@ When dealing with thousands of domains, a simple sequential script would take ho
 ---
 ## System Architecture & Workflow
 
-Instead of a basic loop, I built an asynchronous engine that can talk to many websites at once. Once an image is found, I convert it into a "perceptual hash" - basically a digital fingerprint that represents how the image looks to the human eye.
+Instead of a basic loop, I built an asynchronous engine that can talk to many websites at once. Once an image is found, I convert it into a "perceptual hash" - basically a digital fingerprint that represents how the image looks to the human eye 
 
 To group these fingerprints, I used a Disjoint Set Union (DSU) algorithm, which I found to be much faster for this type of relationship mapping than traditional clustering methods.
 
@@ -37,10 +37,10 @@ Web scraping is mostly about waiting for servers to respond. I used aiohttp to e
 - Heuristic Layer: Scans all `<img>` tags for keywords like "brand", "logo", or "navbar" in their classes or IDs.
 
 ### 2. Perceptual Hashing (The "Fingerprint")
-Standard hashes (like MD5) change completely if even one pixel is different. This doesn't work for logos because different sites might host the same logo at different sizes. I implemented **pHash (Perceptual Hash)**. It analyzes the structure of the image in the frequency domain. This creates a 64-bit "fingerprint" that remains stable even if the image is resized, compressed, or converted from PNG to JPG.
+Standard hashes (like MD5) change completely if even one pixel is different. This doesn't work for logos because different sites might host the same logo at different sizes. I implemented [**pHash (Perceptual Hash)**](https://www.phash.org/). It analyzes the structure of the image in the frequency domain. This creates a 64-bit "fingerprint" that remains stable even if the image is resized, compressed, or converted from PNG to JPG.
    
 ### 3. Disjoint Set Union (The "Organizer")
-Once I have the hashes, I need to group them. Comparing every image with every other image is an $O(N^2)$ problem. To keep it efficient, I used a **Disjoint Set Union (DSU)** data structure.
+Once I have the hashes, I need to group them. Comparing every image with every other image is an $O(N^2)$ problem. To keep it efficient, I used a [**Disjoint Set Union (DSU)**](https://www.geeksforgeeks.org/dsa/introduction-to-disjoint-set-data-structure-or-union-find-algorithm/) data structure.
 - For every pair of images, I calculate the **Hamming Distance** (how many bits differ between their hashes).
 - If the distance is $\le 8$, the two domains are "unioned" into the same cluster.
 - This allows the system to find entire "families" of related websites (like car dealership networks) almost instantly.
@@ -77,7 +77,7 @@ The project is fully optimized for Docker, allowing for easy resource monitoring
 I included a Docker configuration to make sure the project runs the same way on any machine, avoiding the "it works on my computer" problem with Python versions.
 
 1. Clone the repo and ensure you have Docker Desktop **running**.
-2. Place the 'logos.snappy.parquet' file in the root directory.
+2. Place the `logos.snappy.parquet` file in the root directory.
 3. Run the following command:
 ```bash
 docker-compose up --build

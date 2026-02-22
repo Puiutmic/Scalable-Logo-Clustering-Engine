@@ -64,6 +64,8 @@ As shown in the terminal output, the system achieved a **45.33% success rate** f
 
 ![Terminal Output - Docker Test 300](screenshots/docker_test_300.png)
 
+Using a 100-domain sample gave me a **61% success rate**.
+
 ![Terminal Output - Docker Test 100](screenshots/docker_test_100.png)
 
 #### Container Management

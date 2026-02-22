@@ -62,14 +62,14 @@ I containerized the application to solve the "dependency hell" often found in Py
 #### Execution Metrics
 As shown in the terminal output, the system achieved a **45.33% success rate** for logo extraction on this specific sample, identifying and hashing 136 unique brand assets.
 
-![Terminal Output - Docker Test 300](docker_test_300.png)
+![Terminal Output - Docker Test 300](screenshots/docker_test_300.png)
 
-![Terminal Output - Docker Test 100](docker_test_100.png)
+![Terminal Output - Docker Test 100](screenshots/docker_test_100.png)
 
 #### Container Management
 The project is fully optimized for Docker, allowing for easy resource monitoring and isolated execution, as seen in the Docker Desktop dashboard:
 
-![Docker Desktop Interface](docker_view.png)
+![Docker Desktop Interface](screenshots/docker_view.png)
 
 ---
 ## How to Run

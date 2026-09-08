@@ -1,0 +1,70 @@
+name: C++ CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    name: Build & Test (${{ matrix.os }})
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure CMake
+        run: >
+          cmake
+          -S cpp
+          -B cpp/build
+          -DBUILD_TESTING=ON
+
+      - name: Build
+        run: >
+          cmake
+          --build cpp/build
+          --config Release
+
+      - name: Run tests
+        run: >
+          ctest
+          --test-dir cpp/build
+          -C Release
+          --output-on-failure
+
+  sanitizers:
+    name: Address + Undefined Behavior Sanitizers
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure sanitized build
+        run: >
+          cmake
+          -S cpp
+          -B cpp/build-sanitized
+          -DBUILD_TESTING=ON
+          -DENABLE_SANITIZERS=ON
+          -DCMAKE_BUILD_TYPE=Debug
+
+      - name: Build sanitized binaries
+        run: >
+          cmake
+          --build cpp/build-sanitized
+
+      - name: Run sanitized tests
+        run: >
+          ctest
+          --test-dir cpp/build-sanitized
+          --output-on-failure

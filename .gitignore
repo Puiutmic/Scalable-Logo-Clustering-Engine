@@ -1,14 +1,79 @@
-# Python cache
+# =========================
+# Python
+# =========================
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
 
-# Dataset (Too large for GitHub)
-*.parquet
+# Virtual environments
+env/
+venv/
+.venv/
 
-# Temporary download folder
+# Python tooling / caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# =========================
+# C++ / CMake
+# =========================
+cpp/build/
+cpp/build-*/
+build/
+build-*/
+
+*.obj
+*.o
+*.exe
+*.pdb
+*.ilk
+*.lib
+*.dll
+*.exp
+
+# =========================
+# Visual Studio / IDE
+# =========================
+.vs/
+*.sln
+*.pyproj
+*.vcxproj.user
+*.user
+*.suo
+
+.vscode/
+.idea/
+
+# =========================
+# Dataset / runtime outputs
+# =========================
+logos.snappy.parquet
+
+hashes.tsv
+results.json
+clusters_cpp.tsv
+
+# =========================
+# Benchmark temporary files
+# =========================
+benchmarks/_benchmark_*.tsv
+benchmarks/_clusters_cpp_*.tsv
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Downloaded / generated assets
+# =========================
 downloaded_logos/
 
-# Visual Studio files
-.vs/
-out/
-build/
+# Old local screenshots
+docker_test_100.png
+docker_test_300.png
+docker_view.png

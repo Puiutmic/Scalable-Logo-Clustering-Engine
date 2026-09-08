@@ -1,6 +1,7 @@
 ﻿# Scalable Logo Clustering Engine
 
 [![C++ CI](https://github.com/PetcuDavid/Scalable-Logo-Clustering-Engine/actions/workflows/cpp-ci.yml/badge.svg?branch=main)](https://github.com/PetcuDavid/Scalable-Logo-Clustering-Engine/actions/workflows/cpp-ci.yml)
+
 **C++20 · Python · asyncio · CMake · GoogleTest · GitHub Actions · Docker**
 
 A performance-focused pipeline for extracting visual brand assets from websites and clustering domains by logo similarity.
